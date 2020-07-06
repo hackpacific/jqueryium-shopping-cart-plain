@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -8,16 +9,44 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="js/application.js"></script>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="css/custom.css" rel="stylesheet">
   </head>
-  <body>
 
+  <body>
+    <div class="container">
+      <div class="card mt-2">
+        <h5 class="card-header">
+          Shopping Cart
+        </h5>
+        <div class="card-body">
+          <table class="w-100" id="itemList">
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card mt-2" id="addProduct">
+        <h5 class="card-header">
+          Add Product
+        </h5>
+        <div class="card-body">
+          <form id="productForm">
+            <div class="d-flex mb-3 justify-content-center">
+              <input type="text" placeholder="Name Of Product" class="form-control mr-5" name="productName" required />
+              <input type="number" placeholder="Cost of Product" class="form-control" name="productCost" required />
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Create Product</button>
+          </form>
+        </div>
+      </div>
+      <h2 id="totalPrice">Total Price: $--.--</h2>
+    </div>
   </body>
+
 </html>
