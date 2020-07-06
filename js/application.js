@@ -1,3 +1,8 @@
+var isMobile = false;
+var card;
+var offsetX;
+var offsetY;
+
 var itemProperty = function (name, price) {
     this.itemName = name;
     this.itemPrice = price;
@@ -97,21 +102,33 @@ var mouseUp = function () {
     $(window).off("mousemove", mouseMove);
 };
 
+var totalPricePosition = function() {
+    if(window.innerWidth <= 768 && !isMobile) {
+        $("#itemList").after($("#totalPrice"));
+        isMobile = true;
+    }
+
+    if(window.innerWidth > 768 && isMobile) {
+        $("#addProduct").after($("#totalPrice"));
+        isMobile = false;
+    }
+    
+}
+
 var createEventListeners = function () {
     $(document).on("click", ".remove .btn", removeItem);
     $(document).on("input", ".quantity input", changeQuantity);
     $("#productForm").on("submit", createItem);
     $("#addProduct .card-header").on("mousedown", mouseDown);
-    $("#addProduct .card-header").on("mouseup", mouseUp)
+    $("#addProduct .card-header").on("mouseup", mouseUp);
+    $(window).on("resize", totalPricePosition);
 };
 
 $(document).ready(function () {
-    var card;
-    var offsetX;
-    var offsetY;
     itemPropertyArr.forEach(function (item) {
         createItemEntry(item);
     });
 
+    totalPricePosition();
     createEventListeners();
 });
